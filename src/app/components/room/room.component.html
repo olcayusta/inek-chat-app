@@ -1,0 +1,26 @@
+<ng-container *ngIf="room$ | async as room">
+
+  <mat-toolbar>
+    <span>{{room.title}}</span>
+    <span class="flex-spacer"></span>
+    <button mat-icon-button matTooltip='Çevrimiçi kullanıcı sayısı'>
+      <mat-icon fontSet='material-icons-outlined' matBadge='16'>people_outline</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Bildirimler">
+      <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Ayrıntılar">
+      <mat-icon fontSet="material-icons-outlined">info</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="chat-container">
+    <div class="chat-container-inner">
+      <app-messages-list [messages]="room.messages"></app-messages-list>
+    </div>
+    <app-message-compose></app-message-compose>
+  </div>
+
+</ng-container>
+
+

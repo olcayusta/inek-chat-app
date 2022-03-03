@@ -1,0 +1,24 @@
+<ng-container *ngFor="let message of messages; index as i">
+  <app-message-wrapper #messageWrapperComponent
+                       [position]="
+                       (message.user.id !== messages[i - 1]?.user?.id && messages[i + 1]?.user?.id === message.user.id) ? 'first' :
+                       (message.user.id !== messages[i - 1]?.user?.id && messages[i + 1]?.user?.id !== message.user.id) ? 'single' :
+                       (message.user.id === messages[i - 1]?.user?.id && message.user.id !== messages[i + 1]?.user?.id) ? 'last'
+                       : (message.user.id === messages[i - 1]?.user?.id && message.user.id === messages[i + 1]?.user?.id) ? 'middle' : 'null'"
+                       [message]="message"
+                       [class.single]="message.user.id !== messages[i - 1]?.user?.id && messages[i + 1]?.user?.id !== message.user.id"
+                       [class.last]="message.user.id === messages[i - 1]?.user?.id && message.user.id !== messages[i + 1]?.user?.id">
+
+    <ng-container slot="foo"
+                  *ngIf="(message.user.id !== messages[i - 1]?.user?.id && message.user.id !== messages[i + 1]?.user?.id) || (message.user.id === messages[i - 1]?.user?.id && message.user.id !== messages[i + 1]?.user?.id)">
+      <app-message-avatar [avatar]="message.user.picture"></app-message-avatar>
+    </ng-container>
+
+    <ng-container slot="bar"
+                  *ngIf="(message.user.id !== messages[i - 1]?.user?.id && message.user.id !== messages[i + 1]?.user?.id) || (message.user.id === messages[i - 1]?.user?.id && message.user.id !== messages[i + 1]?.user?.id)">
+      <div class="message-author">{{message.user.displayName}}</div>
+    </ng-container>
+  </app-message-wrapper>
+</ng-container>
+
+

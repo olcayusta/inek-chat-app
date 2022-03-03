@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <span>Sohbetler</span>
+</mat-toolbar>
+
+<!--
+<form autocomplete='off' spellcheck='false' class='search-form'>
+  <mat-icon>search</mat-icon>
+  <input placeholder='Ara'>
+</form>
+-->
+
+<mat-nav-list>
+  <h3 mat-subheader>Odalar</h3>
+  <!--  <a mat-list-item routerLink="/room/1" routerLinkActive="active">
+      <div class="room-avatar" mat-list-avatar>G</div>
+      <div mat-line>Genel konular</div>
+      <div mat-line>You: Hello friends!</div>
+    </a>
+    <a mat-list-item routerLink="/room/2" routerLinkActive="active">
+      <div mat-line>Oda 2</div>
+      <div mat-line>You: Hello cats!</div>
+    </a>
+    <a mat-list-item routerLink="/room/3" routerLinkActive="active">
+      <div mat-line>Oda 3</div>
+      <div mat-line>You: Hello dogs!</div>
+    </a>-->
+  <a mat-list-item [routerLink]="['room/', room.id]" *ngFor='let room of rooms$ | async as rooms'
+     routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}'>
+    <div class='room-avatar' mat-list-avatar>G</div>
+    <div mat-line>{{room.title}}</div>
+    <div mat-line class='secondary-line'>{{room.message ? room.message : 'Hello world!'}}</div>
+  </a>
+</mat-nav-list>

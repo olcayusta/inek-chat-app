@@ -1,1 +1,200 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$inek-chat-app-primary: mat.define-palette(mat.$indigo-palette);
+$inek-chat-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$inek-chat-app-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$inek-chat-app-theme: mat.define-light-theme((
+        color: (
+                primary: $inek-chat-app-primary,
+                accent: $inek-chat-app-accent,
+                warn: $inek-chat-app-warn,
+        )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  // scrollbar-width: thin;
+}
+
+.dark-theme {
+  mat-sidenav-container {
+    background-color: #121212 !important;
+  }
+
+  mat-toolbar {
+    background-color: #121212 !important;
+  }
+
+  mat-sidenav {
+    background-color: #121212 !important;
+  }
+}
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography: mat.define-typography-config(
+        $font-family: 'Archivo, Roboto, monospace',
+        $headline: mat.define-typography-level(32px, 48px, 700),
+        $body-1: mat.define-typography-level(16px, 24px, 500)
+);
+
+$primary-typography: mat.define-typography-config(
+        $font-family: 'Archivo, Roboto, monospace'
+);
+
+@include mat.toolbar-typography($custom-typography);
+@include mat.list-typography($primary-typography);
+/* You can add global styles to this file, and also import other style files */
+
+@media (prefers-color-scheme: light) {
+  @include mat.all-component-themes($inek-chat-app-theme);
+
+  :root {
+    scrollbar-color: rgba(0, 0, 0, 0.12) transparent;
+    --chat-primary-bg-color: #6200ee12;
+    --chat-primary-color: #6200ee;
+    --medium-emphasis-color: rgba(0, 0, 0, 0.6);
+    --scroll-bar-bg-color: rgba(0, 0, 0, 0.2);
+    --chat-post-bg-color: #f1f3f4;
+  }
+
+  mat-sidenav-container {
+    background-color: #fff !important;
+  }
+
+  mat-toolbar {
+    background-color: #fff !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  $dark-primary-text: rgba(black, 0.87);
+  $light-primary-text: white;
+
+  $deep-purple-palette: (
+          50: #F2E7FE,
+          100: #DBB2FF,
+          200: #BB86FC,
+          300: #985EFF,
+          400: #7F39FB,
+          500: #6200EE,
+          600: #5600E8,
+          700: #3700B3,
+          800: #30009C,
+          900: #23036A,
+          A100: #b388ff,
+          A200: #7c4dff,
+          A400: #651fff,
+          A700: #6200ea,
+          contrast: (
+                  50: $dark-primary-text,
+                  100: $dark-primary-text,
+                  200: $dark-primary-text,
+                  300: $light-primary-text,
+                  400: $light-primary-text,
+                  500: $light-primary-text,
+                  600: $light-primary-text,
+                  700: $light-primary-text,
+                  800: $light-primary-text,
+                  900: $light-primary-text,
+                  A100: $dark-primary-text,
+                  A200: $light-primary-text,
+                  A400: $light-primary-text,
+                  A700: $light-primary-text,
+          )
+  );
+
+  $inek-chat-app-primary: mat.define-palette(mat.$deep-purple-palette, 200);
+  $inek-chat-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+  // The warn palette is optional (defaults to red).
+  $inek-chat-app-warn: mat.define-palette(mat.$red-palette);
+
+  $chat-app-dark-theme: mat.define-dark-theme((
+          color: (
+                  primary: $inek-chat-app-primary,
+                  accent: $inek-chat-app-accent,
+                  warn: $inek-chat-app-warn,
+          )
+  ));
+
+  :root {
+    color-scheme: dark;
+    scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+    --chat-primary-color: white;
+    --chat-primary-bg-color: #bb86fc12;
+    --medium-emphasis-color: rgba(255, 255, 255, 0.6);
+    --scroll-bar-bg-color: rgba(255, 255, 255, 0.12);
+    --chat-post-bg-color: rgba(255, 255, 255, 0.12);
+  }
+
+  @include mat.all-component-themes($chat-app-dark-theme);
+
+  mat-sidenav-container {
+    background-color: #121212 !important;
+  }
+
+  mat-toolbar {
+    background-color: #121212 !important;
+    border-bottom: 1px solid #ffffff12 !important;
+  }
+
+  mat-sidenav {
+    background-color: #121212 !important;
+  }
+}
+
+mat-sidenav-content {
+  min-height: 100vh;
+}
+
+mat-sidenav {
+  width: 400px;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-bar-bg-color);
+  border-radius: 4px;
+}
+
+.mat-dialog-container {
+  border-radius: 28px !important;
+}

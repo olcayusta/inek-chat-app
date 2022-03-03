@@ -1,0 +1,40 @@
+:host {
+  flex-shrink: 0;
+  font-size: 40px;
+  line-height: 40px;
+  height: 40px;
+  width: 40px;
+}
+
+.avatar-container {
+  flex-shrink: 0;
+  line-height: inherit;
+  height: inherit;
+  position: relative;
+  width: inherit;
+}
+
+/* Old avatar css */
+.img-back {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 100%;
+  background-color: #f1f3f4;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+:host {
+  opacity: 0;
+}
+
+:host[loaded] {
+  opacity: 1;
+}

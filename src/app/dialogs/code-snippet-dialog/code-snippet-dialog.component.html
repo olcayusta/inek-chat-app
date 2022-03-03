@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Create spinnet</h2>
+<mat-dialog-content>
+
+
+  <form autocomplete='off' spellcheck='false'>
+    <div class='row'>
+      <mat-form-field appearance='outline'>
+        <mat-label>Title</mat-label>
+        <input matInput placeholder='snippet.txt'>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select disableOptionCentering>
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <p>code-snippet-dialog works!</p>
+
+</mat-dialog-content>
+<mat-dialog-actions align='end'>
+  <button mat-button [mat-dialog-close]='false'>İPTAL</button>
+  <button mat-button color='primary' [mat-dialog-close]='true'>OLUŞTUR</button>
+</mat-dialog-actions>

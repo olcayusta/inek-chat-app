@@ -1,0 +1,40 @@
+<div class='compose-container'>
+  <div>
+    <button mat-icon-button cdkOverlayOrigin #trigger='cdkOverlayOrigin' matTooltip='Gif seç'
+            (click)='this.gifPopupOpened = !this.gifPopupOpened'>
+      <mat-icon>gif</mat-icon>
+    </button>
+    <button mat-icon-button (click)='openDialog()' matTooltip='Daha fazla'>
+      <mat-icon fontSet='material-icons-outlined'>add</mat-icon>
+    </button>
+  </div>
+  <div class='input-container'>
+  <textarea spellcheck='false' [formControl]='messageControl' cdkTextareaAutosize cdkAutosizeMinRows='2'
+            placeholder='Bir mesaj yaz'
+            (keydown.enter)='sendMessage($event)'></textarea>
+  </div>
+</div>
+
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]='trigger' [cdkConnectedOverlayOpen]='gifPopupOpened' (overlayOutsideClick)='outsideClicked()'>
+  <div class='picker-wrapper mat-elevation-z4'>
+    <div class='wrapper'>
+      <div class='gif-picker'>
+        <section>
+          <div class='search-bar'>
+            <mat-icon class='search-icon'>search</mat-icon>
+            <input class='search-input' placeholder='GIF arayın' [(ngModel)]='searchTerm' #inputElement (keyup)='onChange(inputElement.value)'>
+          </div>
+          <div class='item-list'>
+            <div class='item' *ngFor='let g of giphies$ | async'>
+              <img [src]='g?.images?.fixed_height?.url' alt=''>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
+

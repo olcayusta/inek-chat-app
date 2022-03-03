@@ -1,0 +1,233 @@
+// Import library functions for theme creation.
+@import '~@angular/material/theming';
+
+// Define your application's custom theme.
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme((
+        color: (
+                primary: $primary,
+                accent: $accent,
+        )
+));
+
+@mixin candy-carousel-color($config-or-theme) {
+  // Extract the color configuration in case a theme has been passed.
+  // This allows consumers to either pass a theme object or a color configuration.
+  $config: mat-get-color-config($config-or-theme);
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+
+  // Define any styles affected by the theme.
+  .candy-carousel {
+    // Use mat-color to extract individual colors from a palette.
+    background-color: mat-color($primary, 100);
+    border-color: mat-color($accent, A400);
+  }
+}
+
+@mixin candy-carousel-theme($theme) {
+  // Extracts the color and typography configurations from the theme.
+  $color: mat-get-color-config($theme);
+
+  // Do not generate styles if configurations for individual theming
+  // systems have been explicitly set to `null`.
+  @if $color != null {
+    @include candy-carousel-color($color);
+  }
+}
+
+
+// Include theme styles for your custom components.
+@include candy-carousel-theme($theme);
+
+.chat-msg {
+  margin-top: 2px;
+  margin-left: 40px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.chat-msg-right {
+  margin-left: 8px;
+}
+
+.img-back {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 50%;
+  background-color: #f1f3f4;
+}
+
+.chat-msg-avatar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+::ng-deep .message-author {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-left: 12px;
+  margin-top: 8px;
+  color: var(--medium-emphasis-color);
+  letter-spacing: 0.4px;
+}
+
+.flex-cl {
+  //display: flex;
+  //flex-direction: column;
+  // margin-left: 8px;
+  margin-left: 8px;
+}
+
+.row-rewerse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.chat-post {
+  display: inline-flex;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: var(--chat-post-bg-color);
+  padding: 10px 12px;
+  border-radius: 24px;
+  letter-spacing: .25px;
+  max-width: 576px;
+}
+
+.primary {
+  background-color: var(--chat-primary-bg-color);
+  color: var(--chat-primary-color);
+}
+
+:host {
+  display: block;
+}
+
+:host.last .chat-msg, :host.single .chat-msg {
+  margin-left: 0 !important;
+  margin-bottom: 24px;
+}
+
+.first {
+  border-radius: 24px 24px 24px 4px !important;
+}
+
+.row-rewerse {
+  .first {
+    border-radius: 24px 24px 4px 24px !important;
+  }
+
+  .middle {
+    border-radius: 24px 4px 4px 24px !important;
+  }
+
+  .chat-post.last {
+    border-radius: 24px 4px 24px 24px !important;
+  }
+}
+
+.middle {
+  border-radius: 4px 24px 24px 4px !important;
+}
+
+.chat-post.last {
+  border-radius: 4px 24px 24px 24px !important;
+}
+
+.post-img {
+  width: 100%;
+  height: 100%;
+  height: 256px;
+  max-width: 100%;
+  display: flex;
+  border-radius: 16px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.fullscreen-image-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /*  padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    width: 100%;
+    z-index: 1000;*/
+
+  /*  position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--bg-image);
+    filter: blur(40px) brightness(.4);
+    background-position: 50%;
+    background-size: cover;
+    z-index: 1000;*/
+}
+
+.image-viewer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  img {
+    display: flex;
+    height: auto;
+  }
+}
+
+.lightbox {
+  display: flex;
+  // height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lightbox ::ng-deep mat-toolbar {
+  background-color: transparent !important;
+  color: #fff;
+}
+
+::ng-deep .lightbox-dialog-container .mat-dialog-container {
+  background-color: rgba(0, 0, 0, .87);
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+.lightbox-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: calc(100vh - 64px);
+    padding-bottom: 64px;
+  }
+}
