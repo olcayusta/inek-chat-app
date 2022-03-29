@@ -5,11 +5,8 @@
 
   <!--  <app-message-avatar [avatar]="message.user.picture"></app-message-avatar>-->
   <div class='flex-cl'>
-    <div class='chat-post candy-carousel' [class.primary]='message.user.id === user.id' #candy (click)="candy.style.backgroundColor = '#f0f0f0'"
-         [class.first]="position === 'first' ? 'first' : null"
-         [class.single]="position === 'single' ? 'single' : null"
-         [class.middle]="position === 'middle' ? 'middle' : null"
-         [class.last]="position === 'last' ? 'last' : null">
+    <div class='chat-post candy-carousel' [class.primary]='message.user.id === user.id' #candy
+         (click)="candy.style.backgroundColor = '#f0f0f0'" [class]='position'>
       <ng-container *ngIf="message.type === 'text'; else image">
         {{message.text}}
       </ng-container>
@@ -29,11 +26,11 @@
 
 
 <ng-template #fullscreenImage>
-<!--  <div class='fullscreen-image-container' [style.&#45;&#45;bg-image]="'url(' + message.text + ')'">
-    <div class='image-viewer'>
-      <img class='fullscreen-image' [src]='message.text' alt=''>
-    </div>
-  </div>-->
+  <!--  <div class='fullscreen-image-container' [style.&#45;&#45;bg-image]="'url(' + message.text + ')'">
+      <div class='image-viewer'>
+        <img class='fullscreen-image' [src]='message.text' alt=''>
+      </div>
+    </div>-->
 
   <div class='lightbox'>
     <mat-toolbar>
