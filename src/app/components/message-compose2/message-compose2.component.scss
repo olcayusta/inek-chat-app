@@ -1,0 +1,87 @@
+:host {
+  --input-bg-color: #fff;
+  --input-color: #202124;
+  --input-bg-fade-color: #fff;
+  --input-bg-transparent-fade-color: hsla(0, 0%, 100%, 0);
+  --input-shadow: 0 1px 5px 0 rgba(60, 64, 67, 0.15), 0 4px 4px 0 rgba(60, 64, 67, 0.1), 0 -0.1px 3px 0 rgba(60, 64, 67, 0.08);
+  bottom: 0;
+  left: 2px;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+
+.compose-container {
+  align-items: flex-end;
+  contain: layout;
+  display: flex;
+  margin: 0 auto;
+  max-width: 975px;
+  padding-bottom: 30px;
+  width: calc(100% - 60px);
+  z-index: 102;
+}
+
+.input-background {
+  background: linear-gradient(180deg, var(--input-bg-transparent-fade-color) 0, var(--input-bg-fade-color) 45%);
+  bottom: 0;
+  left: -10px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+}
+
+.input-box {
+  background-color: var(--input-bg-color);
+  border: var(--message-compose-input-border-override);
+  border-radius: 26px;
+  box-shadow: var(--message-compose-input-shadow-override, var(--input-shadow));
+  display: flex;
+  padding: 6px 20px;
+  width: 100%;
+  z-index: 1;
+}
+
+@media (min-width: 960px) {
+  .input-box {
+    flex-direction: column;
+    width: calc(100% - 60px);
+  }
+}
+
+.input-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.autosize-textarea {
+  width: 100%;
+  --autosize-textarea-placeholder-disabled-color: #9aa0a6;
+  display: flex;
+  flex-grow: 1;
+
+  textarea {
+    font: 400 14px/20px Roboto, Helvetica Neue, sans-serif, NotoColorEmoji, apple color emoji, windows emoji, windows symbol;
+    letter-spacing: .2px;
+    background-color: var(--input-bg-color);
+    border: 0;
+    box-sizing: border-box;
+    color: var(--input-color);
+    left: -0.1em;
+    line-height: var(--line-height, 20px);
+    outline: 0;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0;
+    position: relative;
+    resize: none;
+    white-space: pre-wrap;
+    width: 100%;
+    word-break: break-word;
+    word-wrap: break-word;
+    z-index: 1;
+  }
+}
