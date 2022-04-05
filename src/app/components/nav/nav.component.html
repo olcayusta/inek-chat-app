@@ -24,10 +24,10 @@
       <div mat-line>Oda 3</div>
       <div mat-line>You: Hello dogs!</div>
     </a>-->
-  <a mat-list-item [routerLink]="['room/', room.id]" *ngFor='let room of rooms$ | async as rooms'
-     routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}'>
-    <div class='room-avatar' mat-list-avatar>G</div>
+  <a mat-list-item [routerLink]="['room/', room.id]" *ngFor="let room of rooms$ | async"
+     routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <div class="room-avatar" mat-list-avatar>{{room.title.charAt(0)}}</div>
     <div mat-line>{{room.title}}</div>
-    <div mat-line class='secondary-line'>{{room.message ? room.message : 'Hello world!'}}</div>
+    <div mat-line class="secondary-line">{{room.message ? room.message.user.displayName + ': ' + room.message.text : 'Hello world!'}}</div>
   </a>
 </mat-nav-list>

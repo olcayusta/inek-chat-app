@@ -27,6 +27,7 @@ import { CodeSnippetDialogComponent } from './dialogs/code-snippet-dialog/code-s
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MessageCompose2Component } from './components/message-compose2/message-compose2.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     LazyLoadImgDirective,
     ImgShadowComponent,
     CodeSnippetDialogComponent,
+    MessageCompose2Component,
   ],
   imports: [
     BrowserModule,

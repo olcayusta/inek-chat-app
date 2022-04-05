@@ -78,3 +78,10 @@ form {
 .secondary-line {
   color: var(--medium-emphasis-color);
 }
+
+a[mat-list-item] {
+  width: auto;
+  margin: 0 8px;
+  border-radius: 8px !important;
+  overflow: hidden;
+}

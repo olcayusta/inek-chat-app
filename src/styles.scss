@@ -83,7 +83,7 @@ $primary-typography: mat.define-typography-config(
   @include mat.all-component-themes($inek-chat-app-theme);
 
   :root {
-    scrollbar-color: rgba(0, 0, 0, 0.12) transparent;
+    // scrollbar-color: rgba(0, 0, 0, 0.60) transparent;
     --chat-primary-bg-color: #6200ee12;
     --chat-primary-color: #6200ee;
     --medium-emphasis-color: rgba(0, 0, 0, 0.6);
@@ -191,6 +191,7 @@ mat-sidenav {
 }
 
 ::-webkit-scrollbar-thumb {
+  min-height: 56px;
   background-color: var(--scroll-bar-bg-color);
   border-radius: 4px;
 }

@@ -1,13 +1,20 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-message-avatar',
   templateUrl: './message-avatar.component.html',
   styleUrls: ['./message-avatar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MessageAvatarComponent implements OnInit {
   @Input() avatar!: string;
+  @Input() position!: string;
 
   constructor(private elementRef: ElementRef) {}
 

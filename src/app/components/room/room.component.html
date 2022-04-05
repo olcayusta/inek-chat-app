@@ -3,8 +3,8 @@
   <mat-toolbar>
     <span>{{room.title}}</span>
     <span class="flex-spacer"></span>
-    <button mat-icon-button matTooltip='Çevrimiçi kullanıcı sayısı'>
-      <mat-icon fontSet='material-icons-outlined' matBadge='16'>people_outline</mat-icon>
+    <button mat-icon-button matTooltip="Çevrimiçi kullanıcı sayısı">
+      <mat-icon fontSet="material-icons-outlined">groups</mat-icon>
     </button>
     <button mat-icon-button matTooltip="Bildirimler">
       <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>
@@ -16,9 +16,10 @@
 
   <div class="chat-container">
     <div class="chat-container-inner">
-      <app-messages-list [messages]="room.messages"></app-messages-list>
+      <app-messages-list [messages]="room.messages" [message]="testMsg"></app-messages-list>
     </div>
-    <app-message-compose></app-message-compose>
+    <app-message-compose (message)="getMessage($event)"></app-message-compose>
+    <!--<app-message-compose2></app-message-compose2>-->
   </div>
 
 </ng-container>
